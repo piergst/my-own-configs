@@ -8,6 +8,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+"Show lines number
+set number
+
 " Make vim using system clipboard
 set clipboard=unnamedplus
 
@@ -16,10 +19,29 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_toogle=3
 let vim_markdown_preview_browser='firefox-esr'
 
+" Rust racer autocompletion config
+set hidden 
+let g:racer_cmd = "/home/pierre/.cargo/bin/racer"
+"let g:racer_experimental_completer = 1
+"let $RUST_SRC_PATH="/home/pierre/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
+
+" Disable Scratch window popup (can be closed with :pclose or Ctrl-w z) 
+set completeopt -=preview
+
 " vim-plug config 
 " ---------------
 
 call plug#begin('~/.vim/plugged')
+
+" Auto completion 
+Plug 'Valloric/YouCompleteMe'
+
+" Rust autocompletion
+Plug 'racer-rust/vim-racer'
+
+" Rust syntax highlighting, formatting and file detection
+Plug 'rust-lang/rust.vim'
+
 " Markdown viewer 
 Plug 'JamshedVesuna/vim-markdown-preview'
 
